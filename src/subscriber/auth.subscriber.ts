@@ -1,6 +1,7 @@
 
 import { hash } from 'bcrypt';
-import { UserEntity } from 'src/user/user.entity';
+import { UserEntity } from 'src/crud/user/user.entity';
+
 import {
     DataSource,
     EntitySubscriberInterface,

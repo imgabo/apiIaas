@@ -4,9 +4,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JWT_SECRET } from 'src/config/configuration';
+import { UserEntity } from 'src/crud/user/user.entity';
+import { UserWhitelist } from 'src/crud/user/userwhitelist.entity';
+
 import { AuthSubscriber } from 'src/subscriber/auth.subscriber';
-import { UserEntity } from 'src/user/user.entity';
-import { UserWhitelist } from 'src/user/userwhitelist.entity';
+
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';

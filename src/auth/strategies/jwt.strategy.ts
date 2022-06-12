@@ -6,7 +6,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 import { PayLoadInterface } from '../payload.interface';
 import { Repository } from 'typeorm';
-import { UserEntity } from 'src/user/user.entity';
+import { UserEntity } from 'src/crud/user/user.entity';
+
 
 
 @Injectable()

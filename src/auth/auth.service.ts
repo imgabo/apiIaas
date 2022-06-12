@@ -3,8 +3,10 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { compare } from 'bcrypt';
 import { use } from 'passport';
-import { UserEntity } from 'src/user/user.entity';
-import { UserWhitelist } from 'src/user/userwhitelist.entity';
+import { UserEntity } from 'src/crud/user/user.entity';
+import { UserWhitelist } from 'src/crud/user/userwhitelist.entity';
+
+
 
 import { Repository } from 'typeorm';
 import { LoginUserDto } from './dto/login.dto';
@@ -29,7 +31,7 @@ export class AuthService {
 
 
     async create(dto: CreateUserDto): Promise<any> {
-        const {nombreUsuario, email} = dto;
+        const {nombreUsuario} = dto;
         //comprobacion si existe el usuario
         const exists = await this.usersRepository.findOne({where:[{nombreUsuario : nombreUsuario}, {email: nombreUsuario} ]});
         if(exists) throw new HttpException({

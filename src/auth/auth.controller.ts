@@ -1,5 +1,5 @@
 import { BadRequestException, Body, Controller, Get, Param, Post, Req, UsePipes, ValidationPipe } from '@nestjs/common';
-import { UserEntity } from 'src/user/user.entity';
+
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login.dto';
 import { CreateUserDto } from './dto/new-user.dto';
@@ -16,10 +16,6 @@ export class AuthController {
     create(@Body() dto: CreateUserDto) {
         return this.authService.create(dto);
     }
-
-
-
-   
 
     //Login
     @UsePipes(new ValidationPipe({whitelist:true}))

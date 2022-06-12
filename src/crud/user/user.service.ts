@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { existsSync } from 'fs';
-import { UserEntity } from 'src/user/user.entity';
-import { UserWhitelist } from 'src/user/userwhitelist.entity';
+
 import { Repository } from 'typeorm';
+import { UserEntity } from './user.entity';
 
 @Injectable()
 export class UserService {
