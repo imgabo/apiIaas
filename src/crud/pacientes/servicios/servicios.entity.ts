@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from "src/crud/user/user.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 
@@ -9,4 +10,8 @@ export class ServiciosEntity {
     id:string
     @Column({type:'varchar', length:20, nullable:false})
     nombre:string
+
+    @OneToMany(() => UserEntity, user => user.servicioIngreso)
+    @OneToMany(() => UserEntity, user => user.servicioActual)
+    user: UserEntity[]
 }
