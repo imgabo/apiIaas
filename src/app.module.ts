@@ -11,6 +11,8 @@ import { PacientesController } from './crud/pacientes/pacientes/pacientes.contro
 import { PacientesModule } from './crud/pacientes/pacientes/pacientes.module';
 import { ServiciosController } from './crud/pacientes/servicios/servicios.controller';
 import { ServiciosModule } from './crud/pacientes/servicios/servicios.module';
+import { FactoresRiesgoController } from './crud/pacientes/factores_riesgo/factores_riesgo.controller';
+import { FactoresRiesgoModule } from './crud/pacientes/factores_riesgo/factores_riesgo.module';
 
 
 
@@ -38,6 +40,7 @@ import { ServiciosModule } from './crud/pacientes/servicios/servicios.module';
   UserModule,
   PacientesModule,
   ServiciosModule,
+  FactoresRiesgoModule,
 ],
   controllers: [AppController],
   providers: [AppService],
