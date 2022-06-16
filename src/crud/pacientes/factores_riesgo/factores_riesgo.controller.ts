@@ -26,6 +26,11 @@ export class FactoresRiesgoController {
         return this.factorRiesgoSvc.delete(dto);
     }
 
+    @Post('update')
+    update(@Body('id') id : string, dto : nuevoFactorRiesgoDto){
+        return this.factorRiesgoSvc.update(id, dto);
+    }
+
 
     
 
