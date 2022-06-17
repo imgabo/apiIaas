@@ -35,7 +35,7 @@ export class DipService {
     //crear un dip
     async create(dto : nuevoDipDTO) : Promise<any> {
         const {nombre} = dto;
-        const exists = await this.dipRepository.findOne({where:[{nombre : nombre}]});
+        const exists = await this.dipRepository.findOne({where:{nombre : nombre}});
         if(exists) throw new HttpException({
             status: HttpStatus.FORBIDDEN,
             error: 'Dip existente',
