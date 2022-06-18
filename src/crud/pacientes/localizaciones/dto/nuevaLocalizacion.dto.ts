@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 
-export class nuevoDipDTO {
+export class NuevaLocalizacionDTO {
 
     @IsString()
     @IsNotEmpty({message:'Nombre: No puede estar vacio'})

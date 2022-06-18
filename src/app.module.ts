@@ -17,6 +17,8 @@ import { DipModule } from './crud/pacientes/dip/dip.module';
 import { ProcedimientosCirugiasModule } from './crud/pacientes/procedimientos-cirugias/procedimientos-cirugias.module';
 import { TipoHeridasController } from './crud/pacientes/tipo-heridas/tipo-heridas.controller';
 import { TipoHeridasModule } from './crud/pacientes/tipo-heridas/tipo-heridas.module';
+import { MicroorganismosModule } from './crud/pacientes/microorganismos/microorganismos.module';
+import { LocalizacionesModule } from './crud/pacientes/localizaciones/localizaciones.module';
 
 
 
@@ -47,6 +49,8 @@ import { TipoHeridasModule } from './crud/pacientes/tipo-heridas/tipo-heridas.mo
   DipModule,
   ProcedimientosCirugiasModule,
   TipoHeridasModule,
+  MicroorganismosModule,
+  LocalizacionesModule,
 ],
   controllers: [AppController],
   providers: [AppService],
