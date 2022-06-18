@@ -19,6 +19,7 @@ import { TipoHeridasController } from './crud/pacientes/tipo-heridas/tipo-herida
 import { TipoHeridasModule } from './crud/pacientes/tipo-heridas/tipo-heridas.module';
 import { MicroorganismosModule } from './crud/pacientes/microorganismos/microorganismos.module';
 import { LocalizacionesModule } from './crud/pacientes/localizaciones/localizaciones.module';
+import { IarepisModule } from './crud/pacientes/iarepis/iarepis.module';
 
 
 
@@ -51,6 +52,7 @@ import { LocalizacionesModule } from './crud/pacientes/localizaciones/localizaci
   TipoHeridasModule,
   MicroorganismosModule,
   LocalizacionesModule,
+  IarepisModule,
 ],
   controllers: [AppController],
   providers: [AppService],
