@@ -12,7 +12,7 @@ export class MicroorganismosService {
         @InjectRepository(MicroorganismosEntity)
         private readonly microorganismoRepository : Repository<MicroorganismosEntity>
     ){}
-        //Obtener todos los microorganismos
+    //Obtener todos los microorganismos
     async getAll(): Promise<MicroorganismosEntity[]>{
         const list = await this.microorganismoRepository.find();
         if (!list.length)throw new HttpException({

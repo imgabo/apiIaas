@@ -5,6 +5,6 @@ import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 export class NuevoMicroorganismoDTO {
     @IsString()
     @IsNotEmpty({message:'Nombre: No puede estar vacio'})
-    @MaxLength(20, {message: 'Nombre: Longitud Maxima de 20'})
+    @MaxLength(50, {message: 'Nombre: Longitud Maxima de 50'})
     nombre: string;
 }

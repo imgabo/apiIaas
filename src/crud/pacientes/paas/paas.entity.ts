@@ -1,10 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity({name:'paas'})
 
-
-@Entity({name:'microorganismos'})
-
-export class MicroorganismosEntity {
+export class PaasEntity {
 
     @PrimaryGeneratedColumn('increment')
     id:string;

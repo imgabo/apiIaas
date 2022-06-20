@@ -5,21 +5,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DB_URL, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from './config/configuration';
 import { AuthModule } from './auth/auth.module';
-import { UserController } from './crud/user/user.controller';
 import { UserModule } from './crud/user/user.module';
-import { PacientesController } from './crud/pacientes/pacientes/pacientes.controller';
 import { PacientesModule } from './crud/pacientes/pacientes/pacientes.module';
-import { ServiciosController } from './crud/pacientes/servicios/servicios.controller';
 import { ServiciosModule } from './crud/pacientes/servicios/servicios.module';
 
-import { DipController } from './crud/pacientes/dip/dip.controller';
+
 import { DipModule } from './crud/pacientes/dip/dip.module';
 import { ProcedimientosCirugiasModule } from './crud/pacientes/procedimientos-cirugias/procedimientos-cirugias.module';
-import { TipoHeridasController } from './crud/pacientes/tipo-heridas/tipo-heridas.controller';
+
 import { TipoHeridasModule } from './crud/pacientes/tipo-heridas/tipo-heridas.module';
 import { MicroorganismosModule } from './crud/pacientes/microorganismos/microorganismos.module';
 import { LocalizacionesModule } from './crud/pacientes/localizaciones/localizaciones.module';
 import { IarepisModule } from './crud/pacientes/iarepis/iarepis.module';
+
+import { PaasModule } from './crud/pacientes/paas/paas.module';
+
 
 
 
@@ -53,6 +53,7 @@ import { IarepisModule } from './crud/pacientes/iarepis/iarepis.module';
   MicroorganismosModule,
   LocalizacionesModule,
   IarepisModule,
+  PaasModule,
 ],
   controllers: [AppController],
   providers: [AppService],

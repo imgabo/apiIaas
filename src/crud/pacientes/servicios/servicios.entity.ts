@@ -8,7 +8,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 export class ServiciosEntity {
     @PrimaryGeneratedColumn('increment')
     id:string
-    @Column({type:'varchar', length:20, nullable:false})
+    @Column({type:'varchar', length:50, nullable:false})
     nombre:string
 
     @OneToMany(() => UserEntity, user => user.servicioIngreso)
