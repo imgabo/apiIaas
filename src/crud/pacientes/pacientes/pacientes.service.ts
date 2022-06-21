@@ -1,6 +1,9 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
 import { Repository } from 'typeorm';
+import { ServiciosEntity } from '../servicios/servicios.entity';
+
 import { NuevoPacienteDto } from './dto/nuevopaciente.dto';
 import { PacientesEntity } from './pacientes.entity';
 
@@ -10,7 +13,11 @@ export class PacientesService {
 
     constructor(
         @InjectRepository(PacientesEntity)
-        private readonly pacienteRepository : Repository<PacientesEntity>
+      
+        private readonly pacienteRepository : Repository<PacientesEntity>,
+        @InjectRepository(ServiciosEntity)
+        private readonly servicioRepository : Repository<ServiciosEntity>
+
     ){}
 
 
@@ -22,15 +29,25 @@ export class PacientesService {
         return pacientes;
     }
 
+ 
+    //crear paciente
+    async create(dto : NuevoPacienteDto) : Promise<any> {
+        const {rut} = dto;
+        const exist = await this.pacienteRepository.findOne({where:[{rut: rut}]});
+  
+        if(exist) throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            error: 'Paciente Existente',
+        }, HttpStatus.FORBIDDEN)
+        const paciente = this.pacienteRepository.create(dto);
+        const servicio = await this.servicioRepository.findOne({where:[{id:dto.servicio_ingreso.toString()}]})
+        paciente.servicioIngreso = servicio;
+
+        await this.pacienteRepository.insert(paciente);
+
+    }
+
 
     // Obtener infomracion de un paciente 
-    async getPaciente(paciente : NuevoPacienteDto): Promise<any>{
-        const id = paciente.id;
-        const exist = await this.pacienteRepository.findOne({where:[{id : id}]});
-        if(!exist) throw new HttpException({
-            status: HttpStatus.FORBIDDEN,
-            error: 'No existe el paciente',
-        }, HttpStatus.FORBIDDEN);
-        return exist;
-    }
+   
 }

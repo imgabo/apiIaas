@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { ServiciosEntity } from '../servicios/servicios.entity';
 import { NuevoPacienteDto } from './dto/nuevopaciente.dto';
 import { PacientesEntity } from './pacientes.entity';
 import { PacientesService } from './pacientes.service';
@@ -10,13 +11,15 @@ export class PacientesController {
 
     //OBTENER TODOS LOS USUARIOS
     @Get()
-    getAll(){
+    async getAll(){
         return this.pacienteSvc.getAll();
     }
 
-    //Get paciente por ID
-    @Get(":id")
-    async getPaciente(@Param() paciente : NuevoPacienteDto):Promise<PacientesEntity>{
-        return await this.pacienteSvc.getPaciente(paciente);
+    @UsePipes(new ValidationPipe({whitelist:true}))
+    @Post("nuevo")
+    async create(@Body() dto : NuevoPacienteDto){
+      console.log(dto.servicio_ingreso);
+      return await this.pacienteSvc.create(dto);
+       
     }
 }

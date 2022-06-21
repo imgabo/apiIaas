@@ -26,12 +26,5 @@ export class UserEntity {
     @OneToOne(() => UserWhitelist, userWhitelist => userWhitelist.user, {cascade: true})
     whitelist : UserWhitelist
 
-    @ManyToOne(() => ServiciosEntity,  servicioIngreso => servicioIngreso.user)
-    @JoinColumn({name: 'servicioIngreso_id'})
-    servicioIngreso : ServiciosEntity;
 
-
-    @ManyToOne(() => ServiciosEntity,  servicioActual => servicioActual.user)
-    @JoinColumn({name: 'servicioActual_id'})
-    servicioActual : ServiciosEntity;
 }

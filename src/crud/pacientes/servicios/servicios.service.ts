@@ -33,6 +33,17 @@ export class ServiciosService {
         return await this.serviciosRepository.insert(dto);
     }
 
+        //Buscar por id
+    async finById(id : string): Promise<ServiciosEntity>{
+        const servicio = await this.serviciosRepository.findOne({ where: {id:id} });
+        if (!servicio)throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            error: 'No Existe',
+        }, HttpStatus.FORBIDDEN);
+        return servicio;
+    }
+    
+
     //Eliminar servicio
     async delete(dto: nuevoServicioDto): Promise<any> {
         const {nombre} = dto;

@@ -1,4 +1,6 @@
-import { IsDate, IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { IsDate, IsInt, IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { nuevoServicioDto } from "../../servicios/dto/nuevoservicio.dto";
+import { ServiciosEntity } from "../../servicios/servicios.entity";
 
 
 
@@ -6,16 +8,17 @@ import { IsDate, IsNotEmpty, IsString, MaxLength } from "class-validator";
 
 export class NuevoPacienteDto {
 
-    @IsString()
-    @IsNotEmpty({message:'Nombre: No puede estar vacio'})
-    @MaxLength(5, {message: 'ID: Longitud Maxima de 5'})
-    id: string;
-
 
     @IsString()
     @IsNotEmpty({message:'Nombre: No puede estar vacio'})
     @MaxLength(20, {message: 'Nombre: Longitud Maxima de 20'})
     nombre: string;
+
+    
+    @IsString()
+    @IsNotEmpty({message:'Rut: No puede estar vacio'})
+    @MaxLength(20, {message: 'Rut: Longitud Maxima de 20'})
+    rut: string;
 
     @IsString()
     @IsNotEmpty({message:'Nombre: No puede estar vacio'})
@@ -33,23 +36,26 @@ export class NuevoPacienteDto {
     @MaxLength(20, {message: 'Apellido: Longitud Maxima de 20'})
     apellido_materno: string;
 
-    @IsString()
+    @IsNumber()
     @IsNotEmpty({message:'Edad: No puede estar vacio'})
-    @MaxLength(10, {message: 'Edad: Longitud Maxima de 10'})
-    edad: string;
+    edad: number;
    
 
-    @IsDate()
+    @IsString()
     @IsNotEmpty({message:'Fecha de Nacimiento: No puede estar vacio'})
-    fecha_nacimiento: Date;
+    fecha_nacimiento: string;
 
     @IsString()
     @IsNotEmpty({message:'Sexo: No puede estar vacio'})
     @MaxLength(10, {message: 'Sexo: Longitud Maxima de 5'})
     sexo: string;
 
-    @IsDate()
+    @IsString()
     @IsNotEmpty({message:'Fecha de Hospitalizacion: No puede estar vacio'})
-    fecha_hospitalizacion: Date;
+    fecha_hospitalizacion: string;
+    
+    @IsNumber()
+    @IsNotEmpty({message:'Servicio ingreso: No puede estar vacio'})
+    servicio_ingreso : number
 
 }
