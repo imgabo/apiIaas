@@ -12,7 +12,7 @@ export class ServiciosEntity {
     @Column({type:'varchar', length:50, nullable:false})
     nombre:string
 
-    @OneToMany(() => PacientesEntity, paciente => paciente.servicioActual)
+    @OneToMany(() => PacientesEntity, paciente => paciente.servicioIngreso)
     @OneToMany(() => PacientesEntity, paciente => paciente.servicioActual)
     paciente: PacientesEntity[]
 }

@@ -19,6 +19,7 @@ import { LocalizacionesModule } from './crud/pacientes/localizaciones/localizaci
 import { IarepisModule } from './crud/pacientes/iarepis/iarepis.module';
 
 import { PaasModule } from './crud/pacientes/paas/paas.module';
+import { VigilanciaDipsModule } from './vigilancias/dips/vigilaciadips.module';
 
 
 
@@ -54,6 +55,7 @@ import { PaasModule } from './crud/pacientes/paas/paas.module';
   LocalizacionesModule,
   IarepisModule,
   PaasModule,
+  VigilanciaDipsModule,
 ],
   controllers: [AppController],
   providers: [AppService],

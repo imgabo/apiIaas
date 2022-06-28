@@ -24,11 +24,20 @@ export class PacientesService {
 
     //obtener todos los pacientes
     async getAll():Promise<PacientesEntity[]>{
-        const pacientes = await this.pacienteRepository.find();
+        const pacientes = await this.pacienteRepository.find({relations: ['servicioIngreso', 'servicioActual']});
         if(!pacientes.length) throw new NotFoundException();
         return pacientes;
     }
 
+    //obtener info por paciente
+    async getPaciente(id : string ): Promise<PacientesEntity> {
+        const paciente = await this.pacienteRepository.findOne({where:[{id : id},], relations: ['servicioIngreso', 'servicioActual']});
+        if(!paciente) throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            error: 'Paciente No Existente',
+        }, HttpStatus.FORBIDDEN)
+        return paciente;
+    }
  
     //crear paciente
     async create(dto : NuevoPacienteDto) : Promise<any> {
@@ -43,11 +52,10 @@ export class PacientesService {
         const servicio = await this.servicioRepository.findOne({where:[{id:dto.servicio_ingreso.toString()}]})
         paciente.servicioIngreso = servicio;
 
-        await this.pacienteRepository.insert(paciente);
+        return await this.pacienteRepository.insert(paciente);
 
     }
 
 
-    // Obtener infomracion de un paciente 
-   
+
 }

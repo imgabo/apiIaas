@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { VigilanciasDipsEntity } from "src/vigilancias/dips/vigilanciadips.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ServiciosEntity } from "../servicios/servicios.entity";
 
 
@@ -36,4 +37,7 @@ export class PacientesEntity {
     @ManyToOne(() => ServiciosEntity,  servicioActual => servicioActual.paciente)
     @JoinColumn({name: 'servicioActual_id'})
     servicioActual : ServiciosEntity;
+
+    @OneToMany(() => VigilanciasDipsEntity, vigilancia => vigilancia.paciente )
+    vigilancia : VigilanciasDipsEntity[];
 }

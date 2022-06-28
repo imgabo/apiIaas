@@ -13,6 +13,5 @@ import { UserWhitelist } from './userwhitelist.entity';
   ])],
   providers: [UserService],
   controllers: [UserController]
-  
 })
 export class UserModule {}

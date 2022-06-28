@@ -27,8 +27,6 @@ export class UserController {
 
     @Patch(':id')
     async updateWhitelist(@Param('id') id : string , @Body('whitelist') status) {
-       
- 
         return this.userSvc.setStatus(id,status);
     }
 }
