@@ -12,7 +12,7 @@ export class VigilanciasDipsEntity {
     id : string
 
     @Column({type : 'varchar',  nullable: false  })
-    fecha_creacion : string;
+    fecha_instalacion : string;
 
     @ManyToOne(() => PacientesEntity, paciente =>  paciente.vigilancia)
     @JoinColumn({name: 'id_paciente'})

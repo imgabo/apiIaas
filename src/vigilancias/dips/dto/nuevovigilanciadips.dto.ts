@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 
 
@@ -6,17 +6,17 @@ import { IsNotEmpty, IsString } from "class-validator";
 export class NuevaVigilanciaDTO {
 
     @IsString()
-    @IsNotEmpty({message:'Fecha de Creacion: No puede estar vacio'})
-    fecha_creacion : string;
+    @IsNotEmpty({message:'Fecha de Instalacion: No puede estar vacio'})
+    fecha_instalacion : string;
 
-    @IsString()
+
     fecha_retiro : string;
     
-    @IsString()
+    @IsNumber()
     @IsNotEmpty({message:'Paciente: No puede estar vacio'})
     id_paciente : string;
 
-    @IsString()
+    @IsNumber()
     @IsNotEmpty({message:'DIP: No puede estar vacio'})
     id_dip : string;
 
@@ -24,7 +24,7 @@ export class NuevaVigilanciaDTO {
     @IsNotEmpty({message:'USUARIO CREACION: No puede estar vacio'})
     id_usuarioCreacion : string;
 
-    @IsString()
+
     id_usuarioRetira : string;
 
 }

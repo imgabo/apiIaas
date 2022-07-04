@@ -26,9 +26,16 @@ export class VigilanciaDipsService {
 
 
   async getVigilancias ( id : string ) : Promise<VigilanciasDipsEntity[]>{
-    const paciente = await this.pacienteRepository.find({where: {id : id}})
-    const vigilancias = await this.vigilanciaDipRepository.find({where: { paciente : paciente}, relations : ['id_dip', 'id_paciente', 'id_usuario_creacion', 'id_usuario_retira']})
-    return vigilancias;
+    const paciente = await this.pacienteRepository.findOne({where: {id : id}})
+    if(!paciente) throw new HttpException({
+      status: HttpStatus.FORBIDDEN,
+      error: 'Paciente No Existente',
+    }, HttpStatus.FORBIDDEN)
+    if (paciente) {
+      const vigilancias = await this.vigilanciaDipRepository.find({where: { paciente : paciente}, relations : ['dip', 'paciente', 'usuarioCreacion', 'usuarioRetira']})
+      return vigilancias;
+    }
+    
   }
 
   async create ( dto : NuevaVigilanciaDTO) : Promise<any>{
