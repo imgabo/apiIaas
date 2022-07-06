@@ -11,7 +11,6 @@ export class VigilanciaDipsController {
    
     @Post('nuevo')
     create(@Body() dto: NuevaVigilanciaDTO){
-        console.log(dto)
         return this.dipVigilanciaSVC.create(dto);
     }
     
