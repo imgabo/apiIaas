@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { VigilanciasCirugiasEntity } from "src/vigilancias/procedimientos-cirugias/vigilanciascirugias.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 
@@ -8,4 +9,7 @@ export class TipoHeridasEntity {
     id:string;
     @Column({type:'varchar', length:20, nullable:false})
     nombre:string;
+
+    @OneToMany(() => VigilanciasCirugiasEntity, vigilancia => vigilancia.herida)
+    vigilancia : VigilanciasCirugiasEntity[];
 }

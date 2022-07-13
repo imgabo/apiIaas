@@ -1,9 +1,7 @@
 import { type } from "os";
 import { UserEntity } from "src/crud/user/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { VigilanciasDipsEntity } from "../../vigilanciadips.entity";
-
-
+import { VigilanciasDipsEntity } from "../vigilanciadips.entity";
 
 
 @Entity({name : 'comentarios-dips'})

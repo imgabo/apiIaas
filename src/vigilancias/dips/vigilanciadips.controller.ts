@@ -15,9 +15,6 @@ export class VigilanciaDipsController {
     }
     
 
-    @Get(':id') // vigilancias-dips/id
-    async getDips(@Param('id') user : string): Promise<VigilanciasDipsEntity[]> {
-        return await this.dipVigilanciaSVC.getVigilancias(user);
-    }
+
 
 }

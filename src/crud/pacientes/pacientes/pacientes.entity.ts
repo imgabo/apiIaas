@@ -1,4 +1,5 @@
 import { VigilanciasDipsEntity } from "src/vigilancias/dips/vigilanciadips.entity";
+import { VigilanciasCirugiasEntity } from "src/vigilancias/procedimientos-cirugias/vigilanciascirugias.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ServiciosEntity } from "../servicios/servicios.entity";
 
@@ -40,4 +41,7 @@ export class PacientesEntity {
 
     @OneToMany(() => VigilanciasDipsEntity, vigilancia => vigilancia.paciente )
     vigilancia : VigilanciasDipsEntity[];
+
+    @OneToMany(() => VigilanciasCirugiasEntity, vigilanciaCirugia => vigilanciaCirugia.paciente )
+    vigilanciaCirugia : VigilanciasCirugiasEntity[];
 }

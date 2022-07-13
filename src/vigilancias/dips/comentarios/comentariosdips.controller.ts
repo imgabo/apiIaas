@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { nuevoComentarioDTO } from '../../dto/nuevocomentariodips.dto';
-import { VigilanciaDipsService } from '../../vigilanciadips.service';
+import { nuevoComentarioDTO } from '../dto/nuevocomentariodips.dto';
+import { VigilanciaDipsService } from '../vigilanciadips.service';
+
 import { ComentariosDipsEntity } from './comentario.entity';
 
 @Controller('comentariosdips')

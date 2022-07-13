@@ -1,12 +1,18 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { VigilanciasDipsEntity } from 'src/vigilancias/dips/vigilanciadips.entity';
 
 import { Repository } from 'typeorm';
 import { ServiciosEntity } from '../servicios/servicios.entity';
 
 import { NuevoPacienteDto } from './dto/nuevopaciente.dto';
 import { PacientesEntity } from './pacientes.entity';
-
+import {
+    paginate,
+    Pagination,
+    IPaginationOptions,
+  } from 'nestjs-typeorm-paginate';
+import { VigilanciasCirugiasEntity } from 'src/vigilancias/procedimientos-cirugias/vigilanciascirugias.entity';
 @Injectable()
 export class PacientesService {
 
@@ -16,17 +22,19 @@ export class PacientesService {
       
         private readonly pacienteRepository : Repository<PacientesEntity>,
         @InjectRepository(ServiciosEntity)
-        private readonly servicioRepository : Repository<ServiciosEntity>
+        private readonly servicioRepository : Repository<ServiciosEntity>,
+        @InjectRepository(VigilanciasDipsEntity)
+        private readonly vigilanciaDipRepository : Repository<VigilanciasDipsEntity>,
+        @InjectRepository(VigilanciasCirugiasEntity)
+        private readonly vigilanciasCirugiasRepository : Repository<VigilanciasCirugiasEntity>
 
     ){}
 
 
 
     //obtener todos los pacientes
-    async getAll():Promise<PacientesEntity[]>{
-        const pacientes = await this.pacienteRepository.find({relations: ['servicioIngreso', 'servicioActual']});
-        if(!pacientes.length) throw new NotFoundException();
-        return pacientes;
+    async getAll(options : IPaginationOptions):Promise <Pagination<PacientesEntity>>{
+        return  paginate<PacientesEntity>(this.pacienteRepository, options, {relations:['servicioIngreso', 'servicioActual']});
     }
 
     //obtener info por paciente
@@ -54,6 +62,26 @@ export class PacientesService {
 
         return await this.pacienteRepository.insert(paciente);
 
+    }
+
+    // VIGILANCIAS //
+    async getVigilanciasDIP ( id : string, options : IPaginationOptions ) : Promise<Pagination<VigilanciasDipsEntity>>{
+        const paciente = await this.pacienteRepository.findOne({where: {id : id}})
+        if(!paciente) throw new HttpException({
+          status: HttpStatus.FORBIDDEN,
+          error: 'Paciente No Existente',
+        }, HttpStatus.FORBIDDEN)
+        //const vigilancias = await this.vigilanciaDipRepository.find({where: { paciente : paciente}, relations : ['dip', 'paciente', 'usuarioCreacion', 'usuarioRetira']})
+        return paginate<VigilanciasDipsEntity>(this.vigilanciaDipRepository, options , {where: {paciente : paciente}, relations:['dip', 'paciente', 'usuarioCreacion', 'usuarioRetira']});
+    }
+
+    async getVigilanciasProcedimientos( id : string, options : IPaginationOptions) : Promise<Pagination<VigilanciasCirugiasEntity>> {
+        const paciente = await this.pacienteRepository.findOne({ where : { id : id}});
+        if(!paciente) throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            error: 'Paciente No Existente',
+        }, HttpStatus.FORBIDDEN)
+        return paginate<VigilanciasCirugiasEntity>(this.vigilanciasCirugiasRepository, options, {where: {paciente : paciente}, relations: ['procedimiento', 'herida', 'paciente', 'usuarioCreacion']})
     }
 
 

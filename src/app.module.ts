@@ -11,7 +11,7 @@ import { ServiciosModule } from './crud/pacientes/servicios/servicios.module';
 
 
 import { DipModule } from './crud/pacientes/dip/dip.module';
-import { ProcedimientosCirugiasModule } from './crud/pacientes/procedimientos-cirugias/procedimientos-cirugias.module';
+
 
 import { TipoHeridasModule } from './crud/pacientes/tipo-heridas/tipo-heridas.module';
 import { MicroorganismosModule } from './crud/pacientes/microorganismos/microorganismos.module';
@@ -20,6 +20,11 @@ import { IarepisModule } from './crud/pacientes/iarepis/iarepis.module';
 
 import { PaasModule } from './crud/pacientes/paas/paas.module';
 import { VigilanciaDipsModule } from './vigilancias/dips/vigilaciadips.module';
+import { ProcedimientosCirugiasModule } from './crud/pacientes/procedimientos-cirugias/procedimientos-cirugias.module';
+
+import { ComentarioscirugiasController } from './vigilancias/procedimientos-cirugias/comentarios/comentarioscirugias.controller';
+import { VigilanciacirugiasModule } from './vigilancias/procedimientos-cirugias/vigilanciacirugias.module';
+
 
 
 
@@ -56,6 +61,7 @@ import { VigilanciaDipsModule } from './vigilancias/dips/vigilaciadips.module';
   IarepisModule,
   PaasModule,
   VigilanciaDipsModule,
+  VigilanciacirugiasModule,
 ],
   controllers: [AppController],
   providers: [AppService],

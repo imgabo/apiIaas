@@ -1,6 +1,9 @@
 import { hash } from "bcrypt";
-import { ComentariosDipsEntity } from "src/vigilancias/dips/comentarios/comentariosdips/comentario.entity";
+import { ComentariosDipsEntity } from "src/vigilancias/dips/comentarios/comentario.entity";
+
 import { VigilanciasDipsEntity } from "src/vigilancias/dips/vigilanciadips.entity";
+import { ComentariosCirugiasEntity } from "src/vigilancias/procedimientos-cirugias/comentarios/comentarioscirugias.entity";
+import { VigilanciasCirugiasEntity } from "src/vigilancias/procedimientos-cirugias/vigilanciascirugias.entity";
 import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ServiciosEntity } from "../pacientes/servicios/servicios.entity";
 import { UserWhitelist } from "./userwhitelist.entity";
@@ -28,12 +31,16 @@ export class UserEntity {
     @OneToOne(() => UserWhitelist, userWhitelist => userWhitelist.user, {cascade: true})
     whitelist : UserWhitelist
 
-    @OneToMany(() => VigilanciasDipsEntity, vigilancia => vigilancia.usuarioCreacion)
-    @OneToMany(() => VigilanciasDipsEntity, vigilancia => vigilancia.usuarioRetira)
-    vigilancia : VigilanciasDipsEntity[];
+    @OneToMany(() => VigilanciasDipsEntity, vigilanciaDip => vigilanciaDip.usuarioCreacion)
+    @OneToMany(() => VigilanciasDipsEntity, vigilanciaDip => vigilanciaDip.usuarioRetira)
+    vigilanciaDip : VigilanciasDipsEntity[];
+
+    @OneToMany(() => VigilanciasDipsEntity, vigilanciaCirugia => vigilanciaCirugia.usuarioCreacion)
+    vigilanciaCirugia : VigilanciasCirugiasEntity[];
 
 
     @OneToMany(() => ComentariosDipsEntity, comentario => comentario.user)
+    @OneToMany(() => ComentariosCirugiasEntity, comentario => comentario.user)
     comentario : ComentariosDipsEntity[];
 
 

@@ -2,7 +2,8 @@ import { DipEntity } from "src/crud/pacientes/dip/dip.entity";
 import { PacientesEntity } from "src/crud/pacientes/pacientes/pacientes.entity";
 import { UserEntity } from "src/crud/user/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ComentariosDipsEntity } from "./comentarios/comentariosdips/comentario.entity";
+import { ComentariosDipsEntity } from "./comentarios/comentario.entity";
+
 
 
 @Entity({name: 'vigilancia-dips'})
@@ -29,11 +30,11 @@ export class VigilanciasDipsEntity {
     @Column({type : 'varchar',  nullable: true  })
     dias_exposicion : string;
 
-    @ManyToOne(() => UserEntity, usuarioCreacion => usuarioCreacion.vigilancia)
+    @ManyToOne(() => UserEntity, usuarioCreacion => usuarioCreacion.vigilanciaDip)
     @JoinColumn({name : 'id_usuario_creacion'})
     usuarioCreacion : UserEntity;
 
-    @ManyToOne(() => UserEntity , usuarioRetira =>  usuarioRetira.vigilancia)
+    @ManyToOne(() => UserEntity , usuarioRetira =>  usuarioRetira.vigilanciaDip)
     @JoinColumn({name : 'id_usuario_retira'})
     usuarioRetira : UserEntity;
 

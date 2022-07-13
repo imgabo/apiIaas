@@ -4,7 +4,8 @@ import { DipEntity } from 'src/crud/pacientes/dip/dip.entity';
 import { PacientesEntity } from 'src/crud/pacientes/pacientes/pacientes.entity';
 import { UserEntity } from 'src/crud/user/user.entity';
 import { Repository } from 'typeorm';
-import { ComentariosDipsEntity } from './comentarios/comentariosdips/comentario.entity';
+import { ComentariosDipsEntity } from './comentarios/comentario.entity';
+
 import { nuevoComentarioDTO } from './dto/nuevocomentariodips.dto';
 import { NuevaVigilanciaDTO } from './dto/nuevovigilanciadips.dto';
 import { VigilanciasDipsEntity } from './vigilanciadips.entity';
@@ -27,20 +28,6 @@ export class VigilanciaDipsService {
         private readonly userRepository : Repository<UserEntity>
     ){}
 
-
-
-  async getVigilancias ( id : string ) : Promise<VigilanciasDipsEntity[]>{
-    const paciente = await this.pacienteRepository.findOne({where: {id : id}})
-    if(!paciente) throw new HttpException({
-      status: HttpStatus.FORBIDDEN,
-      error: 'Paciente No Existente',
-    }, HttpStatus.FORBIDDEN)
-    if (paciente) {
-      const vigilancias = await this.vigilanciaDipRepository.find({where: { paciente : paciente}, relations : ['dip', 'paciente', 'usuarioCreacion', 'usuarioRetira']})
-      return vigilancias;
-    }
-    
-  }
 
   async create ( dto : NuevaVigilanciaDTO) : Promise<any>{
     const vigilancia = this.vigilanciaDipRepository.create(dto);
