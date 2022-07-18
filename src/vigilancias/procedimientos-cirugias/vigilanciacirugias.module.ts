@@ -11,16 +11,17 @@ import { VigilanciacirugiasService } from './vigilanciacirugias.service';
 import { VigilanciasCirugiasEntity } from './vigilanciascirugias.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    VigilanciasCirugiasEntity,
-    ComentariosCirugiasEntity,
-    TipoHeridasEntity,
-    procedimientosCirugiasEntity,
-    PacientesEntity,
-    UserEntity,
-    
-  ])],
+  imports: [
+    TypeOrmModule.forFeature([
+      VigilanciasCirugiasEntity,
+      ComentariosCirugiasEntity,
+      TipoHeridasEntity,
+      procedimientosCirugiasEntity,
+      PacientesEntity,
+      UserEntity,
+    ]),
+  ],
   controllers: [VigilanciacirugiasController, ComentarioscirugiasController],
-  providers: [VigilanciacirugiasService]
+  providers: [VigilanciacirugiasService],
 })
 export class VigilanciacirugiasModule {}

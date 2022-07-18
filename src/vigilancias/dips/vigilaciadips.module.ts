@@ -11,14 +11,16 @@ import { ComentariosDipsEntity } from './comentarios/comentario.entity';
 import { ComentariosdipsController } from './comentarios/comentariosdips.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    ComentariosDipsEntity,
-    VigilanciasDipsEntity,
-    PacientesEntity,
-    DipEntity,
-    UserEntity
-  ])],
+  imports: [
+    TypeOrmModule.forFeature([
+      ComentariosDipsEntity,
+      VigilanciasDipsEntity,
+      PacientesEntity,
+      DipEntity,
+      UserEntity,
+    ]),
+  ],
   controllers: [VigilanciaDipsController, ComentariosdipsController],
-  providers: [VigilanciaDipsService]
+  providers: [VigilanciaDipsService],
 })
 export class VigilanciaDipsModule {}

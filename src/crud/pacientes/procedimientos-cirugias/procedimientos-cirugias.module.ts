@@ -5,9 +5,7 @@ import { procedimientosCirugiasEntity } from './procedimientos-cirugias.entity';
 import { ProcedimientosCirugiasService } from './procedimientos-cirugias.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    procedimientosCirugiasEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([procedimientosCirugiasEntity])],
   controllers: [ProcedimientosCirugiasController],
   providers: [ProcedimientosCirugiasService],
 })

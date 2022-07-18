@@ -5,10 +5,8 @@ import { LocalizacionesEntity } from './localizaciones.entity';
 import { LocalizacionesService } from './localizaciones.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    LocalizacionesEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([LocalizacionesEntity])],
   controllers: [LocalizacionesController],
-  providers: [LocalizacionesService]
+  providers: [LocalizacionesService],
 })
 export class LocalizacionesModule {}

@@ -62,20 +62,25 @@ export class TipoHeridasService {
   }
 
   //updatear tipo de herida
-  async update(id:string, dto:NuevoTipoHeridaDTO):Promise<any> {
+  async update(id: string, dto: NuevoTipoHeridaDTO): Promise<any> {
     const tipoHerida = await this.findByID(id);
-    if(!tipoHerida) throw new HttpException({
-        status : HttpStatus.FORBIDDEN,
-        error : 'No existe',
-    }, HttpStatus.FORBIDDEN);
-    tipoHerida.nombre ? tipoHerida.nombre = dto.nombre : tipoHerida.nombre = tipoHerida.nombre;
+    if (!tipoHerida)
+      throw new HttpException(
+        {
+          status: HttpStatus.FORBIDDEN,
+          error: 'No existe',
+        },
+        HttpStatus.FORBIDDEN,
+      );
+    tipoHerida.nombre
+      ? (tipoHerida.nombre = dto.nombre)
+      : (tipoHerida.nombre = tipoHerida.nombre);
     await this.tipoHeridaRepository.save(tipoHerida);
-}
+  }
 
-//eliminar un tipo de herida
-async delete( id : string) : Promise<any>{
+  //eliminar un tipo de herida
+  async delete(id: string): Promise<any> {
     const tipoHerida = await this.findByID(id);
     await this.tipoHeridaRepository.delete(tipoHerida);
-}
-
+  }
 }

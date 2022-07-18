@@ -5,10 +5,8 @@ import { TipoHeridasEntity } from './tipo-heridas.entity';
 import { TipoHeridasService } from './tipo-heridas.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    TipoHeridasEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([TipoHeridasEntity])],
   controllers: [TipoHeridasController],
-  providers: [TipoHeridasService]
+  providers: [TipoHeridasService],
 })
 export class TipoHeridasModule {}

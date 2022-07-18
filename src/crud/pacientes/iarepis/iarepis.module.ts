@@ -5,10 +5,8 @@ import { IarepisEntity } from './iarepis.entity';
 import { IarepisService } from './iarepis.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    IarepisEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([IarepisEntity])],
   controllers: [IarepisController],
-  providers: [IarepisService]
+  providers: [IarepisService],
 })
 export class IarepisModule {}

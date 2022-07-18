@@ -5,10 +5,8 @@ import { PaasEntity } from './paas.entity';
 import { PaasService } from './paas.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    PaasEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([PaasEntity])],
   controllers: [PaasController],
-  providers: [PaasService]
+  providers: [PaasService],
 })
 export class PaasModule {}

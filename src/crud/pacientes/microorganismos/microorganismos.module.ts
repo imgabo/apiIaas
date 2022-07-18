@@ -5,10 +5,8 @@ import { MicroorganismosEntity } from './microorganismos.entity';
 import { MicroorganismosService } from './microorganismos.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    MicroorganismosEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([MicroorganismosEntity])],
   controllers: [MicroorganismosController],
-  providers: [MicroorganismosService]
+  providers: [MicroorganismosService],
 })
 export class MicroorganismosModule {}

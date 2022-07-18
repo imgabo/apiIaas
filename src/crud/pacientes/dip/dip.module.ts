@@ -5,10 +5,8 @@ import { DipEntity } from './dip.entity';
 import { DipService } from './dip.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    DipEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([DipEntity])],
   providers: [DipService],
-  controllers: [DipController]
+  controllers: [DipController],
 })
 export class DipModule {}

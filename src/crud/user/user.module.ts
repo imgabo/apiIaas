@@ -7,11 +7,8 @@ import { UserService } from './user.service';
 import { UserWhitelist } from './userwhitelist.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    UserWhitelist,
-    UserEntity,
-  ])],
+  imports: [TypeOrmModule.forFeature([UserWhitelist, UserEntity])],
   providers: [UserService],
-  controllers: [UserController]
+  controllers: [UserController],
 })
 export class UserModule {}
